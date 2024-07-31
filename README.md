@@ -1,63 +1,66 @@
-### Objective
+# RETORNA API
 
-Your assignment is to build an internal API for a fake financial institution using Node and no framework.
+This project is a basic HTTP API for a fake financial institution, designed to manage bank accounts and handle transactions. It is built using Node.js with TypeScript and MongoDB with Mongoose.
 
-### Brief
+## Prerequisites
 
-While modern banks have evolved to serve a plethora of functions, at their core, banks must provide certain basic features. Today, your task is to build the basic HTTP API for one of those banks! Imagine you are designing a backend API for bank employees. It could ultimately be consumed by multiple frontends (web, iOS, Android etc).
+- Node.js (v18 or higher)
+- MongoDB
 
-### Tasks
+## Setup
 
-- Implement assignment using:
-  - Language: **Node preferably TypeScript**
-  - Framework: **no framework**
-- There should be API routes that allow them to:
-  - Create a new bank account for a customer, with an initial deposit amount. A
-    single customer may have multiple bank accounts.
-  - Transfer amounts between any two accounts, including those owned by
-    different customers.
-  - Retrieve balances for a given account.
-  - Retrieve transfer history for a given account.
-- Write tests for your business logic
+1. Clone the repository:
+    ```bash
+    git clone http://retorna-3-ebanxz@git.codesubmit.io/retorna-3/retorna-banking-api-xpijed
+    cd bank-api
+    ```
 
-Feel free to pre-populate your customers with the following:
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Arisha Barron"
-  },
-  {
-    "id": 2,
-    "name": "Branden Gibson"
-  },
-  {
-    "id": 3,
-    "name": "Rhonda Church"
-  },
-  {
-    "id": 4,
-    "name": "Georgina Hazel"
-  }
-]
-```
+3. Create a `.env` file in the root of the project with the following content:
+    ```env
+    PORT=
+    DB_URL=
+    ```
 
-You are expected to design any other required models and routes for your API.
+## Running the Project
 
-### Evaluation Criteria
+1. Start the MongoDB server:
+    ```bash
+    mongod
+    ```
 
-- **Node** best practices
-- Completeness: did you complete the features?
-- Correctness: does the functionality act in sensible, thought-out ways?
-- Maintainability: is it written in a clean, maintainable way?
-- Testing: is the system adequately tested?
-- Documentation: is the API well-documented?
+2. Run the project in development mode:
+    ```bash
+    npm run dev
+    ```
 
-### CodeSubmit
+## Project Structure
 
-Please organize, design, test and document your code as if it were going into production - then push your changes to the master branch. After you have pushed your code, you may submit the assignment on the assignment page.
-
-All the best and happy coding,
-
-The Retorna Team
+src/
+|-- controllers/
+| |-- accountController.ts
+| |-- customerController.ts
+|
+|-- models/
+| |-- account.ts
+| |-- customer.ts
+|
+|-- routes/
+| |-- accountRoutes.ts
+| |-- customerRoutes.ts
+| |-- primaryRouter.ts
+| |-- routesPath.ts
+|
+|-- services/
+| |-- accountService.ts
+| |-- customerService.ts
+|
+|-- utils/
+| |-- database.ts
+| |-- response.ts
+|
+|-- index.ts
