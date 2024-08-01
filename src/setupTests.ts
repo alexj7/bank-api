@@ -3,6 +3,9 @@ import { MongoMemoryReplSet } from 'mongodb-memory-server';
 
 let testServer: MongoMemoryReplSet;
 
+// Increase the timeout delay for wait for the memory database to start
+jest.setTimeout(8000);
+
 // Configure the memory database before all tests
 beforeAll(async () => {
     testServer = await MongoMemoryReplSet.create({

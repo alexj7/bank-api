@@ -1,6 +1,11 @@
-# RETORNA API
+# BANK API
 
 This project is a basic HTTP API for a fake financial institution, designed to manage bank accounts and handle transactions. It is built using Node.js with TypeScript and MongoDB with Mongoose.
+
+## Description
+
+This API use MongoDB for its flexibility, scalability, and efficient querying capabilities, making it well-suited for handling the dynamic data requirements of a financial application. Instead of storing account balances directly on db, balances are calculated in real-time from the transaction history. This ensures accuracy, consistency, and transparency, as every transaction is accounted for in the balance calculation, facilitating easier auditing and reducing the risk of discrepancies.
+
 
 ## Prerequisites
 
@@ -11,7 +16,7 @@ This project is a basic HTTP API for a fake financial institution, designed to m
 
 1. Clone the repository:
     ```bash
-    git clone http://retorna-3-ebanxz@git.codesubmit.io/retorna-3/retorna-banking-api-xpijed
+    git clone https://github.com/alexj7/bank-api.git
     cd bank-api
     ```
 
@@ -20,26 +25,43 @@ This project is a basic HTTP API for a fake financial institution, designed to m
     npm install
     ```
 
-3. Create a `.env` file in the root of the project with the following content:
-    ```env
+3. Create a `.env` file in the root of the project with the values specified in `.env.example`:
+    ```**env**
     PORT=
     DB_URL=
     ```
 
 ## Running the Project
 
-1. Start the MongoDB server:
-    ```bash
-    mongod
-    ```
+Base URL to test: http://localhost:3000/api
 
-2. Run the project in development mode:
+1. Run the project in development mode:
     ```bash
     npm run dev
     ```
 
+2. Run tests:
+    ```bash
+    npm run test
+    ```
+
+3. Build the project for production:
+    ```bash
+    npm run build
+    ```
+
+4. Run the project in production mode:
+    ```bash
+    npm start
+    ```
+
+## API Documentation
+
+The API documentation is available at the following link: [API Documentation](https://documenter.getpostman.com/view/4977734/2sA3kd9xAL#88de8d04-97bc-4665-a2d0-7b4ece6f953c)
+
 ## Project Structure
 
+```
 src/
 |-- controllers/
 | |-- accountController.ts
@@ -56,8 +78,6 @@ src/
 |-- routes/
 | |-- router.ts
 | |-- routesPath.ts
-| |-- __tests__/
-|   |-- *.test.ts
 |
 |-- services/
 | |-- accountService.ts
@@ -72,7 +92,6 @@ src/
 |-- utils/
 | |-- *.ts
 | |-- index.ts
-| |-- __tests__/
-|   |-- *.test.ts
 |
 |-- index.ts
+```
