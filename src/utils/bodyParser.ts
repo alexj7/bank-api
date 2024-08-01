@@ -1,12 +1,13 @@
 import { IncomingMessage } from 'http';
+import { parse } from 'querystring';
 
 /**
- * @description Parses the body of an incoming request.
+ * Parses the body of a request and returns it as a JSON object.
  * 
- * @param req - Incoming request object
- * @returns Promise<string>
+ * @param {IncomingMessage} req - The incoming request object.
+ * @returns {Promise<any>} - The parsed body as a JSON object.
  */
-const getPostData = (req: IncomingMessage): Promise<string> => {
+export const getPostData = (req: IncomingMessage): Promise<any> => {
     return new Promise((resolve, reject) => {
         try {
             let body = '';
@@ -15,12 +16,20 @@ const getPostData = (req: IncomingMessage): Promise<string> => {
             });
 
             req.on('end', () => {
-                resolve(body);
+                try {
+                    if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+                        const parsedBody = parse(body);
+                        resolve(parsedBody);
+                    } else {
+                        const parsedBody = JSON.parse(body);
+                        resolve(parsedBody);
+                    }
+                } catch (error) {
+                    reject(new Error('Invalid JSON'));
+                }
             });
         } catch (err) {
             reject(err);
         }
     });
 };
-
-export default getPostData;

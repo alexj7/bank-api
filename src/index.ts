@@ -2,7 +2,7 @@ import { createServer } from 'http';
 
 import dotenv from 'dotenv';
 
-import { connectDB } from './utils/database';
+import { connectDB } from './utils';
 import router from './routes/router';
 
 dotenv.config();

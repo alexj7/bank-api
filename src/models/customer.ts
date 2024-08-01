@@ -5,7 +5,7 @@ interface ICustomer extends Document {
 }
 
 const CustomerSchema: Schema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: [true, 'The customer name is required'] },
 });
 
 export default mongoose.model<ICustomer>('Customer', CustomerSchema);

@@ -2,15 +2,15 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 interface IAccount extends Document {
     customerId: mongoose.Schema.Types.ObjectId;
-    balance: number;
+    name: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 const AccountSchema: Schema = new Schema(
     {
-        customerId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Customer' },
-        balance: { type: Number, required: true, default: 0 },
+        customerId: { type: mongoose.Schema.Types.ObjectId, required: [true, 'Customer id is quired'], ref: 'Customer' },
+        name: { type: String, required: [true, 'The bank name is required'], }
     },
     { timestamps: true }
 );
