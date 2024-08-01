@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Account from '../models/account';
+import Account, { IAccount } from '../models/account';
 
 import transactionService from './transactionService';
 
@@ -12,7 +12,7 @@ import transactionService from './transactionService';
  * 
  * @returns {Promise<Account>} - The newly created account
  */
-const createAccount = async (customerId: string, initial: number, name: string) => {
+const createAccount = async (customerId: string, initial: number, name: string): Promise<IAccount> => {
     const account = new Account({ name, customerId, balance: initial });
     await account.save();
 
@@ -36,7 +36,7 @@ const createAccount = async (customerId: string, initial: number, name: string) 
  * @returns {Promise<Account>} - The account
  */
 const getAccountById = async (accountId: string) => {
-    return await Account.findById(accountId);
+    return await Account.findById(accountId).populate('customerId');
 }
 
 /**
@@ -74,8 +74,6 @@ const calculateBalance = async (accountId: string): Promise<number> => {
         return balance;
     }, 0);
 };
-
-
 
 export default {
     calculateBalance,

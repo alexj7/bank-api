@@ -14,8 +14,6 @@ const createTransaction = async (req: IncomingMessage, res: ServerResponse) => {
         sendResponse(res, 201, transaction);
     } catch (error) {
 
-        console.log(error);
-
         if (error instanceof Error) {
             sendResponse(res, 400, { message: error.message });
             return;

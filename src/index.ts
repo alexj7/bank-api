@@ -1,17 +1,16 @@
 import { createServer } from 'http';
-
 import dotenv from 'dotenv';
 
-import { connectDB } from './utils';
 import router from './routes/router';
+
+import { connectDB } from './utils';
 
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
-const server = createServer((req, res) => {
-    router(req, res);
-});
+// Initialize the server and pass router to handle requests
+const server = createServer(router);
 
 connectDB(process.env.DB_URL || '');
 

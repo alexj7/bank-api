@@ -44,23 +44,35 @@ src/
 |-- controllers/
 | |-- accountController.ts
 | |-- customerController.ts
+| |-- transactionController.ts
+| |-- __tests__/
+|   |-- *.test.ts
 |
 |-- models/
 | |-- account.ts
 | |-- customer.ts
+| |-- transaction.ts
 |
 |-- routes/
-| |-- accountRoutes.ts
-| |-- customerRoutes.ts
-| |-- primaryRouter.ts
+| |-- router.ts
 | |-- routesPath.ts
+| |-- __tests__/
+|   |-- *.test.ts
 |
 |-- services/
 | |-- accountService.ts
 | |-- customerService.ts
+| |-- transactionService.ts
+| |-- __tests__/
+|   |-- *.test.ts
+|
+|-- types/
+| |-- *.d.ts
 |
 |-- utils/
-| |-- database.ts
-| |-- response.ts
+| |-- *.ts
+| |-- index.ts
+| |-- __tests__/
+|   |-- *.test.ts
 |
 |-- index.ts
